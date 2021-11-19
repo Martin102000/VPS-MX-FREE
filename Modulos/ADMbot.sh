@@ -179,7 +179,7 @@ blockfun () {
 local bot_retorno="$LINE\n"
           bot_retorno+="--❌ USTED NO PUEDE USAR EL BOT ❌--\n"
           bot_retorno+="$LINE\n"
-          bot_retorno+="_--Si eres ADMIN introduse tus credenciales--_\n"
+          bot_retorno+="_--Si eres ADMIN introduce tus credenciales--_\n"
           bot_retorno+="$LINE\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
@@ -298,7 +298,7 @@ demo3="$(less /etc/BOT-A/SSH-DEMO.log)"
 demor="$(echo $demo3)"
 
 local bot_retorno="*$LINE*\n"
-         bot_retorno+="*🔰 MANAGER VPS-MX 2.0 🔰*\n"
+         bot_retorno+="*🔰 MANAGER VPS-MX 3.5 🔰*\n"
          bot_retorno+="$LINE\n"
 		 bot_retorno+="_▪️ SSH REGISTRADAS:_ ( *$SSH4* )\n"	
          bot_retorno+="_▪️ CONECTADOS:_ ( *$ONLINES* )\n"
@@ -1132,7 +1132,8 @@ if [[ $2 = "-loked" ]]; then
 [[ $(cat ${USRloked}|grep -w "$1") ]] && return 1
 echo " $1 (BLOCK-MULTILOGIN) $(date +%r--%d/%m/%y)"
 limseg="$(less /etc/VPS-MX/controlador/tiemdes.log)"
-KEY="862633455:AAGJ9BBJanzV6yYwLSemNAZAVwn7EyjrtcY"
+K_BOT=`less /etc/VPS-MX/controlador/kbot.log`
+KEY="$K_BOT"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 MSG="⚠️ AVISO DE VPS: $NOM1 ⚠️
 🔹 CUENTA: $1 

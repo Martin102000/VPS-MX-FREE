@@ -9,10 +9,11 @@ SCPidioma="${SCPdir}/idioma"
 SCPusr="${SCPdir}/controlador"
 SCPfrm="${SCPdir}/herramientas"
 SCPinst="${SCPdir}/protocolos"
-kalix1="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FBQUFBRVhRT1N5SXBOMkpaMGVoVVEvVlBTLU1YLUZSRUUvbWFpbi9Nb2R1bG9zCg=="
+kalix1="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL01hcnRpbjEwMjAwMC9WUFMtTVgtRlJFRS9tYWluL01vZHVsb3M=="
 PUTO='base64 -d'
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+#deshabilitado por problemas con dns
+#echo "nameserver 8.8.8.8" > /etc/resolv.conf
+#echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 service apache2 restart > /dev/null 2>&1
 myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | head -n1`;
 myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
@@ -37,7 +38,7 @@ AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCO
 }
 ### PAQUETES PRINCIPALES 
 msg -bar2
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Kalix1 ❌\033[1;33m ]"
+msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Alekc_2000 ❌\033[1;33m ]"
 msg -bar
 echo -e "\033[97m"
 echo -e "  \033[41m    -- INSTALACION DE PAQUETES PARA VPS-MX --    \e[49m"
@@ -153,7 +154,7 @@ idfix64_86 () {
 clear
 clear
 msg -bar2
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Kalix1 ❌\033[1;33m ]"
+msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Alekc_2000 ❌\033[1;33m ]"
 msg -bar2
 echo ""
 echo -e "\e[91m   INSTALACION SEMI MANUAL DE PAQUETES "
@@ -176,7 +177,7 @@ clear
 clear
 clear
 msg -bar2
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Kalix1 ❌\033[1;33m ]"
+msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Alekc_2000 ❌\033[1;33m ]"
 msg -bar2
 echo ""
 echo -e "\e[91mESCOJER PRIMERO #All locales# Y LUEGO #en_US.UTF-8# \e[0m" 
@@ -194,7 +195,7 @@ clear
 clear
 clear
 msg -bar2
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Kalix1 ❌\033[1;33m ]"
+msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Alekc_2000 ❌\033[1;33m ]"
 msg -bar2
 echo -e "\033[1;97m  ¿PRECENTO ALGUN ERROR ALGUN PAQUETE ANTERIOR?" 
 msg -bar2
@@ -226,13 +227,13 @@ byinst="true"
 install_fim () {
 msg -ama "               Finalizando Instalacion" && msg bar2
 #rm -rf /etc/VPS-MX/controlador/nombre.log &>/dev/null
-[[ $(find /etc/VPS-MX/controlador -name nombre.log|grep -w "nombre.log"|head -1) ]] || wget -O /etc/VPS-MX/controlador/nombre.log https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/ArchivosUtilitarios/nombre.log &>/dev/null
-[[ $(find /etc/VPS-MX/controlador -name IDT.log|grep -w "IDT.log"|head -1) ]] || wget -O /etc/VPS-MX/controlador/IDT.log https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/ArchivosUtilitarios/IDT.log &>/dev/null
-[[ $(find /etc/VPS-MX/controlador -name tiemlim.log|grep -w "tiemlim.log"|head -1) ]] || wget -O /etc/VPS-MX/controlador/tiemlim.log https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/ArchivosUtilitarios/tiemlim.log &>/dev/null
+[[ $(find /etc/VPS-MX/controlador -name nombre.log|grep -w "nombre.log"|head -1) ]] || wget -O /etc/VPS-MX/controlador/nombre.log https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/ArchivosUtilitarios/nombre.log &>/dev/null
+[[ $(find /etc/VPS-MX/controlador -name IDT.log|grep -w "IDT.log"|head -1) ]] || wget -O /etc/VPS-MX/controlador/IDT.log https://raw.githubusercontent.com/Martin102000//VPS-MX-FREE/main/Install/ArchivosUtilitarios/IDT.log &>/dev/null
+[[ $(find /etc/VPS-MX/controlador -name tiemlim.log|grep -w "tiemlim.log"|head -1) ]] || wget -O /etc/VPS-MX/controlador/tiemlim.log https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/ArchivosUtilitarios/tiemlim.log &>/dev/null
 
-wget -O /bin/rebootnb https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/ArchivosUtilitarios/rebootnb &> /dev/null
+wget -O /bin/rebootnb https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/ArchivosUtilitarios/rebootnb &> /dev/null
 chmod +x /bin/rebootnb 
-wget -O /bin/resetsshdrop https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/ArchivosUtilitarios/resetsshdrop &> /dev/null
+wget -O /bin/resetsshdrop https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/ArchivosUtilitarios/resetsshdrop &> /dev/null
 chmod +x /bin/resetsshdrop
 msg -bar2
 echo '#!/bin/sh -e' > /etc/rc.local
@@ -255,7 +256,7 @@ echo 'echo "" '>> .bashrc
 echo 'echo -e "\t\033[92mRESELLER : $mess1 "'>> .bashrc
 echo 'echo "" '>> .bashrc                                               
 echo 'echo -e "\t\033[97mPARA MOSTAR PANEL BASH ESCRIBA: sudo VPS-MX o vps-mx "'>> .bashrc
-echo 'wget -O /etc/versin_script_new https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/Version &>/dev/null'>> .bashrc
+echo 'wget -O /etc/versin_script_new https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/Version &>/dev/null'>> .bashrc
 echo 'echo ""'>> .bashrc
 echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL "
 echo -e "  \033[1;41m               sudo VPS-MX o vps-mx             \033[0;37m" && msg -bar2
@@ -315,21 +316,21 @@ NOTIFY () {
 clear
 clear
 msg -bar
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Kalix1 ❌\033[1;33m ]"
+msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Alekc_2000 ❌\033[1;33m ]"
 msg -bar
-msg -ama " Notify-BOT (Notificasion Remota)| VPS-MX By @Kalix1 "
+msg -ama " Notify-BOT (Notificasion Remota)| VPS-MX By @Alekc_2000 "
 msg -bar
 echo -e "\033[1;94m Notify-BOT es un simple notificador de:"
 echo -e "\033[1;94m >> Usuario Expirado"
 echo -e "\033[1;94m >> Usuario Eliminado"
 echo -e "\033[1;94m >> Avisos de VPS Reiniciada"
 echo -e "\033[1;94m >> Avisos de Monitor de Protocolos"
-echo -e "\033[1;97m Inicie BOT de Telegram @Noti_VPSMX_Bot"
-echo -e "\033[1;92m ¡¡ Para sacar su ID entre al BOT @USA1_BOT"
-echo -e "\033[1;92m Aparesera algo parecido 👤 → Tu ID es: 45145564"
 msg -bar
 echo -e "\033[1;93mIgrese un nombre para el VPS:\033[0;37m"; read -p " " nombr
 echo "${nombr}" > /etc/VPS-MX/controlador/nombre.log
+echo -e "\033[1;93mIgrese SU KEYBOT:\033[0;37m"; read -p " " kbot
+touch /etc/VPS-MX/controlador/kbot.log >> /dev/null
+echo "${kbot}" > /etc/VPS-MX/controlador/kbot.log
 echo -e "\033[1;93mIgrese su ID 👤:\033[0;37m"; read -p " " idbot
 echo "${idbot}" > /etc/VPS-MX/controlador/IDT.log 
 msg -bar
@@ -339,8 +340,8 @@ NOM="$(less /etc/VPS-MX/controlador/nombre.log)"
 NOM1="$(echo $NOM)"
 IDB1=`less /etc/VPS-MX/controlador/IDT.log` > /dev/null 2>&1
 IDB2=`echo $IDB1` > /dev/null 2>&1
-
-KEY="862633455:AAGJ9BBJanzV6yYwLSemNAZAVwn7EyjrtcY"
+K_BOT=`less /etc/VPS-MX/controlador/kbot.log`
+KEY="$K_BOT"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 MSG="⚠️ ►► AVISO DE VPS: $NOM1 ⚠
 👉 ►► MENSAJE DE PRUEBA
@@ -350,15 +351,15 @@ curl -s --max-time 10 -d "chat_id=$IDB2&disable_web_page_preview=1&text=$MSG" $U
 echo -e "\033[1;34m            SE ENVIO MENSAJE DE PRUEBA "
 }
 fun_ip
-wget -O /usr/bin/trans https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/ArchivosUtilitarios/trans &> /dev/null
-wget -O /bin/Desbloqueo.sh https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/ArchivosUtilitarios/Desbloqueo.sh &> /dev/null
+wget -O /usr/bin/trans https://raw.githubusercontent.com/Martin10200/VPS-MX-FREE/main/Install/ArchivosUtilitarios/trans &> /dev/null
+wget -O /bin/Desbloqueo.sh https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/ArchivosUtilitarios/Desbloqueo.sh &> /dev/null
 chmod +x /bin/Desbloqueo.sh
-wget -O /bin/monitor.sh https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/Monitor-Service/monitor.sh &> /dev/null
+wget -O /bin/monitor.sh https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/Monitor-Service/monitor.sh &> /dev/null
 chmod +x /bin/monitor.sh
-wget -O /var/www/html/estilos.css https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/Monitor-Service/estilos.css &> /dev/null
+wget -O /var/www/html/estilos.css https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/Monitor-Service/estilos.css &> /dev/null
 msg -bar2
 msg -bar2
-msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Kalix1 ❌\033[1;33m ]"
+msg -ama "     [ VPS - MX - SCRIPT \033[1;97m ❌ MOD By @Alekc_2000 ❌\033[1;33m ]"
 msg -ama "  \033[1;96m      🔰Usar Ubuntu 20 a 64 De Preferencia🔰 "
 msg -bar2
 [[ $1 = "" ]] && funcao_idioma || {
@@ -378,7 +379,7 @@ sleep 1s
 updatedb
 if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "Code de KEY Invalido!") ]]; then
    msg -bar2
-   msg -verd "$(source trans -b es:${id} " Ficheros Copiados"|sed -e 's/[^a-z -]//ig'): \e[97m[\e[93mVPS-MX #MOD by @Kalix1\e[97m]"
+   msg -verd "$(source trans -b es:${id} " Ficheros Copiados"|sed -e 's/[^a-z -]//ig'): \e[97m[\e[93mVPS-MX #MOD by @Alekc_2000\e[97m]"
    [[ ! -d ${SCPinstal} ]] && mkdir ${SCPinstal}
    pontos="."
    stopping="$(source trans -b es:${id} "Configurando Directorios"|sed -e 's/[^a-z -]//ig')"
@@ -398,13 +399,13 @@ if [[ -e $HOME/lista-arq ]] && [[ ! $(cat $HOME/lista-arq|grep "Code de KEY Inva
    echo "${SCPdir}/menu" > /usr/bin/VPS-MX && chmod +x /usr/bin/VPS-MX
    echo "${SCPdir}/menu" > /bin/h && chmod +x /bin/h
    rm -rf $HOME/systemverify* &> /dev/null
-   wget -O $HOME/systemverify https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/systemverify &> /dev/null
+   wget -O $HOME/systemverify https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/systemverify &> /dev/null
    chmod +x $HOME/systemverify && ./systemverify &> /dev/null
    echo "$Key" > ${SCPdir}/key.txt
    [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}   
    [[ ${#id} -gt 2 ]] && echo "es" > ${SCPidioma} || echo "${id}" > ${SCPidioma}
    echo -e "${cor[2]}         DESEAS INSTALAR NOTI-BOT?(Default n)"
-   echo -e "\033[1;34m  (Deves tener Telegram y el BOT: @Noti_VPSMX_Bot)"
+   echo -e "\033[1;34m  (Debes tener Telegram y un bot creado por botfather)"
    msg -bar2
    read -p " [ s | n ]: " -e -i n NOTIFY   
    [[ "$NOTIFY" = "s" || "$NOTIFY" = "S" ]] && NOTIFY

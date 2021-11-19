@@ -18,11 +18,12 @@ EstadoServicio() {
     else
         echo "<p>Estado del servicio $1 está || <span class='detenido'> DESACTIVADO | REINICIANDO</span>.</p>" >> $DIR/$ARCHIVO
 		service $1 restart && 
-		NOM=`less /etc/newadm/ger-user/nombre.log` > /dev/null 2>&1
-        NOM1=`echo $NOM` > /dev/null 2>&1
-        IDB=`less /etc/newadm/ger-user/IDT.log` > /dev/null 2>&1
-        IDB1=`echo $IDB` > /dev/null 2>&1
-        KEY="862633455:AAGJ9BBJanzV6yYwLSemNAZAVwn7EyjrtcY"
+        NOM="$(less /etc/VPS-MX/controlador/nombre.log)"
+        NOM1="$(echo $NOM)"
+        IDB1=`less /etc/VPS-MX/controlador/IDT.log` > /dev/null 2>&1
+        IDB2=`echo $IDB1` > /dev/null 2>&1
+        K_BOT=`less /etc/VPS-MX/controlador/kbot.log`
+        KEY="$K_BOT"
         URL="https://api.telegram.org/bot$KEY/sendMessage"
         MSG="⚠️ AVISO DE VPS: $NOM1 ⚠️
 		❗️Service $1 con fallo / Reiniciando❗️"
@@ -67,11 +68,12 @@ echo "<p>Estado del servicio badvpn está ||  $badvpn </span>.</p> " >> $DIR/$AR
 PIDVRF3="$(ps aux|grep badvpn |grep -v grep|awk '{print $2}')"
 if [[ -z $PIDVRF3 ]]; then
 screen -dmS badvpn2 /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 10
-NOM=`less /etc/newadm/ger-user/nombre.log` > /dev/null 2>&1
-NOM1=`echo $NOM` > /dev/null 2>&1
-IDB=`less /etc/newadm/ger-user/IDT.log` > /dev/null 2>&1
-IDB1=`echo $IDB` > /dev/null 2>&1
-KEY="862633455:AAGJ9BBJanzV6yYwLSemNAZAVwn7EyjrtcY"
+NOM="$(less /etc/VPS-MX/controlador/nombre.log)"
+NOM1="$(echo $NOM)"
+IDB1=`less /etc/VPS-MX/controlador/IDT.log` > /dev/null 2>&1
+IDB2=`echo $IDB1` > /dev/null 2>&1
+K_BOT=`less /etc/VPS-MX/controlador/kbot.log`
+KEY="$K_BOT"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 MSG="⚠️ AVISO DE VPS: $NOM1 ⚠️
 ❗️ Reiniciando BadVPN ❗️"
@@ -89,11 +91,12 @@ do
 PIDVRF3="$(ps aux|grep pydic-"$port" |grep -v grep|awk '{print $2}')"
 if [[ -z $PIDVRF3 ]]; then
 screen -dmS pydic-"$port" python /etc/ger-inst/PDirect.py "$port"
-NOM=`less /etc/newadm/ger-user/nombre.log` > /dev/null 2>&1
-NOM1=`echo $NOM` > /dev/null 2>&1
-IDB=`less /etc/newadm/ger-user/IDT.log` > /dev/null 2>&1
-IDB1=`echo $IDB` > /dev/null 2>&1
-KEY="862633455:AAGJ9BBJanzV6yYwLSemNAZAVwn7EyjrtcY"
+NOM="$(less /etc/VPS-MX/controlador/nombre.log)"
+NOM1="$(echo $NOM)"
+IDB1=`less /etc/VPS-MX/controlador/IDT.log` > /dev/null 2>&1
+IDB2=`echo $IDB1` > /dev/null 2>&1
+K_BOT=`less /etc/VPS-MX/controlador/kbot.log`
+KEY="$K_BOT"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 MSG="⚠️ AVISO DE VPS: $NOM1 ⚠️
 ❗️ Reiniciando Proxy-PhytonDirecto: $port ❗️ "

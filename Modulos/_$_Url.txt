@@ -1,7 +1,7 @@
 ________________________
 Localizador de recursos:
 
-https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/Install/ArchivosUtilitarios/common-password
+https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/ArchivosUtilitarios/common-password
 __________________
 Localizador de IP:
 

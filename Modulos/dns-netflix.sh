@@ -22,7 +22,7 @@ msg -bar2
 msg -tit
 echo -e "\033[1;93m     AGREGARDOR DE DNS PERSONALES By @USA1_BOT "
 msg -bar2
-echo -e "\033[1;39m Esta funcion ara que puedas ver Netflix con tu VPS"
+echo -e "\033[1;39m Esta funcion hara que puedas ver Netflix con tu VPS"
 msg -bar2
 echo -e "\033[1;91m ¡ Solo seran utiles si registraste tu IP en el BOT !"
 echo -e "\033[1;39m En APPS como HTTP Inyector,KPN Rev,APKCUSTOM, etc."
