@@ -27,16 +27,16 @@ tcpbypass_fun () {
 [[ -d $HOME/socks ]] && rm -rf $HOME/socks > /dev/null 2>&1
 cd $HOME && mkdir socks > /dev/null 2>&1
 cd socks
-patch="https://www.dropbox.com/s/ce12nl9imh3z84i/backsocz.zip"
-arq="backsocz.zip"
-wget $patch > /dev/null 2>&1
+patch="https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/PROYECTOS_DESCONTINUADOS/master/NEW-ULTIMATE-VPS-MX-8.0/VPS-MX-v8.4/Install/ArchivosUtilitarios/backsocz"
+arq="backsocz"
+wget $patch -o /dev/null
 unzip $arq > /dev/null 2>&1
-mv -f /root/socks/backsocz/./ssh /etc/ssh/sshd_config && service ssh restart 1> /dev/null 2>/dev/null
-mv -f /root/socks/backsocz/sckt$(python3 --version|awk '{print $2}'|cut -d'.' -f1,2) /usr/sbin/sckt
-mv -f /root/socks/backsocz/scktcheck /bin/scktcheck
+mv -f ./ssh /etc/ssh/sshd_config && service ssh restart 1> /dev/null 2>/dev/null
+mv -f sckt$(python3 --version|awk '{print $2}'|cut -d'.' -f1,2) /usr/sbin/sckt
+mv -f scktcheck /bin/scktcheck
 chmod +x /bin/scktcheck
 chmod +x  /usr/sbin/sckt
-rm -rf $HOME/root/socks
+rm -rf $HOME/socks
 cd $HOME
 msg="$2"
 [[ $msg = "" ]] && msg="@Kalix1"
@@ -62,12 +62,10 @@ screen -dmS getpy python ${SCPinst}/PGet.py -b "0.0.0.0:$1" -p "${SCPinst}/pwd.p
 }
 
 PythonDic_fun () {
-echo -e "\033[1;33m  Selecciona Puerto Local y Encabezado\033[1;37m" 
+echo -e "\033[1;97mSelecciona Puerto Local\033[1;37m" 
 msg -bar
-echo -ne "\033[1;97mDigite Un Puerto SSH/DROPBEAR activo: \033[1;92m" && read puetoantla 
-msg -bar
-echo -ne "\033[1;97mRespuesta de encabezado (200,101,404,500,etc): \033[1;92m" && read rescabeza
-msg -bar
+echo -ne "Digite Un Puerto SSH/DROPBEAR activo: \033[1;37m" && read puetoantla 
+ msg -bar
 (
 less << PYTHON  > /etc/VPS-MX/protocolos/PDirect.py
 import socket, threading, thread, select, signal, sys, time, getopt
@@ -85,7 +83,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:$puetoantla'
-RESPONSE = 'HTTP/1.1 $rescabeza <strong>$texto_soket</strong>\r\nContent-length: 0\r\n\r\nHTTP/1.1 $rescabeza Connection established\r\n\r\n'
+RESPONSE = 'HTTP/1.1 200 <strong>$texto_soket</strong>\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'
 #RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
 
 class Server(threading.Thread):
@@ -365,7 +363,6 @@ pidproxy3=$(ps x | grep "PDirect.py" | grep -v "grep" | awk -F "pts" '{print $1}
 pidproxy4=$(ps x | grep "POpen.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy4 ]] && pid_kill $pidproxy4
 pidproxy5=$(ps x | grep "PGet.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy5 ]] && pid_kill $pidproxy5
 pidproxy6=$(ps x | grep "scktcheck" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy6 ]] && pid_kill $pidproxy6
-pidproxy7=$(ps x | grep "python.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy7 ]] && pid_kill $pidproxy7
 echo -e "\033[1;91m  $(fun_trans  "Socks DETENIDOS")"
 msg -bar
 rm -rf /etc/VPS-MX/PortPD.log
@@ -401,11 +398,11 @@ done
     7)remove_fun;;
     0)return;;
  esac
-echo -e "\033[1;33m       Selecciona Puerto Principal del Proxy"
+echo -e "Selecciona Puerto Principal del Proxy"
 msg -bar
 porta_socket=
 while [[ -z $porta_socket || ! -z $(mportas|grep -w $porta_socket) ]]; do
-echo -ne "Digite el Puerto: \033[1;92m" && read porta_socket
+echo -ne "Digite el Puerto: \033[1;37m" && read porta_socket
 tput cuu1 && tput dl1
 done
 echo -e "$(fun_trans  "Introdusca su Mini-Banner")"
@@ -423,4 +420,4 @@ echo -ne "Introduzca el texto de estado plano o en HTML:\n \033[1;37m" && read t
 echo -e "\033[1;92m$(fun_trans "Procedimiento COMPLETO")"
 msg -bar
 }
-iniciarsocks                
+iniciarsocks

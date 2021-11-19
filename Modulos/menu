@@ -114,7 +114,7 @@ SCPidioma="${SCPdir}/idioma"
 local LINGUAGE=$(cat ${SCPidioma})
 [[ -z $LINGUAGE ]] && LINGUAGE=es
 [[ $LINGUAGE = "es" ]] && echo "$@" && return
-[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://www.dropbox.com/s/ryky68szhqhi48e/trans &> /dev/null
+[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX/main/VPS-MX_Oficial/ArchivosUtilitarios/trans &> /dev/null
 [[ ! -e /etc/VPS-MX/texto-mx ]] && touch /etc/VPS-MX/texto-mx
 source /etc/VPS-MX/texto-mx
 if [[ -z "$(echo ${texto[$@]})" ]]; then
@@ -145,7 +145,7 @@ fun_ip
 SCPinstal="$HOME/install"
 verificar_arq () {
 case $1 in
-"menu"|"message.txt")ARQ="${SCPdir}/";; #Menu
+"menu"|"message.txt"|"menu.enc")ARQ="${SCPdir}/";; #Menu
 "usercodes")ARQ="${SCPusr}/";; #Panel SSRR
 "C-SSR.sh")ARQ="${SCPinst}/";; #Panel SSR
 "openssh.sh")ARQ="${SCPinst}/";; #OpenVPN
@@ -158,7 +158,7 @@ case $1 in
 "Shadowsocks-R.sh")ARQ="${SCPinst}/";; #Instalacao 
 "v2ray.sh")ARQ="${SCPinst}/";; #Instalacao
 "budp.sh")ARQ="${SCPinst}/";; #Instalacao
-"sockspy.sh"|"PDirect.py"|"PPub.py"|"PPriv.py"|"POpen.py"|"PGet.py"|"python.py")ARQ="${SCPinst}/";; #Instalacao
+"sockspy.sh"|"PDirect.py"|"PPub.py"|"PPriv.py"|"POpen.py"|"PGet.py")ARQ="${SCPinst}/";; #Instalacao
 *)ARQ="${SCPfrm}/";; #Herramientas
 esac
 mv -f ${SCPinstal}/$1 ${ARQ}/$1
@@ -180,7 +180,7 @@ clear
 msg -bar
 msg -tit
 echo -e "\033[1;91m      ACTULIZAR FICHEROS DEL SCRIPT VPS-MX"
-msg -bar2 && msg -ne "\033[1;93m          >>> INTRODUZCA LA KEY ABAJO <<<\n   \033[1;37m" && read Key
+msg -bar2 && msg -ne "\033[1;93m          >>> INTRODUSCA LA KEY ABAJO <<<\n   \033[1;37m" && read Key
 tput cuu1 && tput dl1
 done
 msg -ne "    # Verificando Key # : "
@@ -569,11 +569,9 @@ case $1 in
 "v2ray.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 "==>>") " && msg -azu "V2RAY ---------------------------- $(pid_inst v2ray)";; 
 "budp.sh")echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "BADVPN-(UDP:7300) ---------------- $(pid_inst badvpn)";;
 
-"python.py")return 1;;
 "paysnd.sh")return 1;;
 "ultrahost")return 1;;
-"speed.py")return 1;;
-"speedtest_v1")return 1;;
+"speed.sh")return 1;;
 "apacheon.sh")return 1;;
 "ports.sh")return 1;;
 "dns-netflix.sh")return 1;;
@@ -592,6 +590,7 @@ case $1 in
 "POpen.py")return 1;;
 "PPriv.py")return 1;;
 "PPub.py")return 1;;
+"speedtest.py")return 1;;
 "SSH20.log")return 1;; 
 *)echo -ne "$(msg -verd " [$2]") $(msg -verm2 "==>>") " && msg -azu "${1^^} \033[1;33m No Hay Una Descripcion !";;
 esac
@@ -613,9 +612,6 @@ float_data "$arqs" "$Numb" && {
 done
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "ADMINISTAR MEDIENTE BOT DE TELEGAM  $ofc"
 script[$Numb]="ADMbot.sh"
-let Numb++
-echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "NOTIFICACIONES NOTY-BOT             $ofc"
-script[$Numb]="NotyBOT.py"
 let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "COMPARTIR ARCHIVO ONLINE            $ofc"
 script[$Numb]="apacheon.sh"
@@ -662,7 +658,7 @@ echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "SCANNER DE SUB
 script[$Numb]="ultrahost"
 let Numb++
 echo -ne "$(msg -verd "[$Numb]") $(msg -verm2 ">") " && msg -azu "PRUEBA DE VELOCIDAD                $ofc"
-script[$Numb]="speed.py"
+script[$Numb]="speed.sh"
 echo -ne "$(msg -bar2)\n$(msg -verd "[0]") $(msg -verm2 ">") " && msg -bra "\e[97m\033[1;41m VOLVER \033[1;37m"
 script[0]="voltar"
 msg -bar2
@@ -892,7 +888,6 @@ done
 monitorport_fun () {
 while true; do
 pidproxy3=$(ps x | grep "PDirect.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy3 ]] && pid_kill $pidproxy3
-pidpyssl=$(ps x | grep "python.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidpyssl ]] && pid_kill $pidpyssl
 sleep 6h 
 done
 }
