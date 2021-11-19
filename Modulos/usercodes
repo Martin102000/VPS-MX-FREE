@@ -287,7 +287,7 @@ useradd -M -s /bin/false $1 -e ${valid} > /dev/null 2>&1 || return 1
    echo "$1|$2|${datexp}|$4" > ${USRdatabase}
    for value in `echo ${newbase}`; do
    echo $value >> ${USRdatabase}
-   echo $value >> ${SCPdir}/B-VPS-MXuser/VPS-MXuser-"$Fecha"
+   echo $value >> ${SCPdir} "$Fecha"
    done
    } || echo "$1|$2|${datexp}|$4" > ${USRdatabase}
 }
