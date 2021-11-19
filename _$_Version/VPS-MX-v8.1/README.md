@@ -15,7 +15,7 @@ UPDATE 03/03/2021
 
 ## :book: Installation ( Team Casita VPS-MX Versao 8.1 )
 
-apt update; apt upgrade -y; wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/VPS-MX-v8.1/instalscript.sh; chmod 777 instalscript.sh* && ./instalscript.sh*
+apt update; apt upgrade -y; wget https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/VPS-MX-v8.1/instalscript.sh; chmod 777 instalscript.sh* && ./instalscript.sh*
 
 ```
 VPS-MX (las dependencias faltantes se instalarán automáticamente)
@@ -26,7 +26,7 @@ VPS-MX (las dependencias faltantes se instalarán automáticamente)
 
 **VERSION: 8.1**
 
-https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/VPS-MX-v8.1/Install/vercion
+https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/VPS-MX-v8.1/Install/vercion
 
 ## :octocat: Credits
 

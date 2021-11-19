@@ -38,7 +38,7 @@ AZUL='\e[34m' && MAGENTA='\e[35m' && MAG='\033[1;36m' &&NEGRITO='\e[1m' && SEMCO
 ### SYSTEM VERIFY
 fun_systemverify () {
 rm -rf $HOME/systemverify* &> /dev/null
-wget -O $HOME/systemverify https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/VPS-MX-FREE/main/VPS-MX-v8.4/Install/systemverify &> /dev/null
+wget -O $HOME/systemverify https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/VPS-MX-v8.4/Install/systemverify &> /dev/null
 chmod +x $HOME/systemverify && ./systemverify
 rm -rf $HOME/systemverify* &> /dev/null
 }

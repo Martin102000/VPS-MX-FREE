@@ -73,7 +73,7 @@ msg -ne "Enter Para Continuar" && read enter
 ${SCPinst}/v2ray.sh
 }
 unistallv2 () {
-source <(curl -sL https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/PROYECTOS_DESCONTINUADOS/master/NEW-ULTIMATE-VPS-MX-8.0/VPS-MX-v8.4/Install/V2RAY/install-v2ray.sh) --remove > /dev/null 2>&1
+source <(curl -sL https://raw.githubusercontent.com/Martin102000/VPS-MX-FREE/main/Install/V2RAY/install-v2ray.sh) --remove > /dev/null 2>&1
 rm -rf /etc/VPS-MX/RegV2ray > /dev/null 2>&1
 echo -e "\033[1;92m                  V2RAY REMOVIDO OK "
 msg -bar
