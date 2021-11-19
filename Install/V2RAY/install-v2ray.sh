@@ -22,7 +22,7 @@ BASE_SOURCE_PATH="https://multi.netlify.app"
 
 UTIL_PATH="/etc/v2ray_util/util.cfg"
 
-UTIL_CFG="$BASE_SOURCE_PATH/v2ray_util/util_core/util.cfg"
+UTIL_CFG="https://multi.netlify.app/v2ray_util/util_core/util.cfg"
 
 BASH_COMPLETION_SHELL="$BASE_SOURCE_PATH/v2ray"
 
