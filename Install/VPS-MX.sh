@@ -260,8 +260,6 @@ echo 'wget -O /etc/versin_script_new https://raw.githubusercontent.com/Martin102
 echo 'echo ""'>> .bashrc
 echo "root hard nofile 100000" >> /etc/security/limits.conf
 echo "root soft nofile 100000" >> /etc/security/limits.conf
-echo "* hard nofile 100000" >> /etc/security/limits.conf
-echo "* soft nofile 100000" >> /etc/security/limits.conf
 echo -e "         COMANDO PRINCIPAL PARA ENTRAR AL PANEL "
 echo -e "  \033[1;41m               sudo VPS-MX o vps-mx             \033[0;37m" && msg -bar2
 sleep 5
