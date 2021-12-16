@@ -33,7 +33,7 @@ USRdatacredi="/etc/BOT-C2/creditos"
 clear
 msg -bar
 msg -tit
-msg -ama "      ## BOT DE GESTION | VPS-MX By @Kalix1 ## \033[1;31m"
+msg -ama "      ## BOT DE GESTION | VPS-MX By @Alekc_2000 ## \033[1;31m"
 msg -bar
 if [[ $1 = "id" || -z $(ps aux |grep -v grep |grep -w "ADMbot.sh"|grep dmS|awk '{print $2}') ]]; then
 [[ -z $2 ]] && echo -ne "\033[1;96m #Digite el Token del BOT\033[0;92m\nTOKEN: \033[0;97m" && read TOKEN || TOKEN="$2"
@@ -130,8 +130,9 @@ done
 # ADICIONA USUARIO
 add_user () {
 #nome senha Dias limite
+#+%C%y-%m-%d
 [[ $(cat /etc/passwd |grep $1: |grep -vi [a-z]$1 |grep -v [0-9]$1 > /dev/null) ]] && return 1
-valid=$(date '+%C%y-%m-%d' -d " +$3 days") && datexp=$(date "+%F" -d " + $3 days")
+valid=$(date '+%d-%m-%C%y' -d " +$3 days") && datexp=$(date "+%F" -d " + $3 days")
 useradd -M -s /bin/false $1 -e ${valid} > /dev/null 2>&1 || return 1
 (echo $2; echo $2)|passwd $1 2>/dev/null || {
     userdel --force $1
@@ -498,13 +499,25 @@ local bot_retorno="$LINE\n"
       return 0
       else
       local bot_retorno="$LINE\n"
-               bot_retorno+="CUENTA CREADA\n"
-			   bot_retorno+="$LINE\n"
-               bot_retorno+="Usuario: $1\n"
-               bot_retorno+="Contraseña: $2\n"
-               bot_retorno+="Duracion: $3 Dias\n"
-               bot_retorno+="Limite: $4 Logeo\n"
-               bot_retorno+="$LINE\n"
+          bot_retorno+="*CUENTA CREADA* \n"
+          bot_retorno+="*$LINE*\n"
+          bot_retorno+="▪️ _Usuario:_ *$1* \n"
+          bot_retorno+="▪️ _Password:_ *$2* \n"
+          bot_retorno+="▪️ _Dias Agregados:_  *$3* \n"
+          bot_retorno+="🕰 _Ahora expira:_\n👉 *$datexp* \n"
+          bot_retorno+="*$LINE*\n"
+          bot_retorno+="▪️ _VPS: _ *ARGENTINA* \n"
+          #bot_retorno+="▪️ _IP:_ *$IP* \n"
+          bot_retorno+="*$LINE*\n"
+
+
+            #bot_retorno+="CUENTA CREADA\n"
+			#bot_retorno+="$LINE\n"
+            #bot_retorno+="Usuario: $1\n"
+            #bot_retorno+="Contraseña: $2\n"
+            #bot_retorno+="Duracion: $3 Dias\n"
+               #bot_retorno+="Limite: $4 Logeo\n"
+               #bot_retorno+="$LINE\n"
                ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
 							--parse_mode markdown
@@ -992,7 +1005,8 @@ userva="$(cat /etc/VPS-MX/VPS-MXuser|grep -w "$cup1"|cut -d'|' -f1)"
 
 [[ -z $userva ]] && error_fun && return 0
 
-datexp=$(date "+%F" -d " + $2 days") && valid=$(date '+%C%y-%m-%d' -d " + $2 days")
+fechaexp=$()
+datexp=$(date "+%F" -d " + $2 days") && valid=$(date '+%d-%m-%C%y' -d " + $2 days")
 chage -E $valid $1 2> /dev/null || return 1
 [[ -e ${USRdatabase} ]] && {
    newbase=$(cat ${USRdatabase}|grep -w -v "$1")          
@@ -1010,14 +1024,15 @@ NOM1=`echo $NOM` > /dev/null 2>&1
 IP="$(cat /etc/VPS-MX/MEUIPvps)"
   
    local bot_retorno="*$LINE*\n"
-          bot_retorno+="*CUENTA RENOVADA* \n"
+          bot_retorno+="*CUENTA CREADA* \n"
 		  bot_retorno+="*$LINE*\n"
 		  bot_retorno+="▪️ _Usuario:_ *$1* \n"
-		  bot_retorno+="▪️ _Dias Agregados:_  *$2* \n"
+          bot_retorno+="▪️ _Password:_ *$2* \n"
+		  bot_retorno+="▪️ _Dias Agregados:_  *$3* \n"
           bot_retorno+="🕰 _Ahora expira:_\n👉 *$datexp* \n"
           bot_retorno+="*$LINE*\n"
-		  bot_retorno+="▪️ _VPS: _ *$NOM1* \n"
-		  bot_retorno+="▪️ _IP:_ *$IP* \n"
+		  bot_retorno+="▪️ _VPS: _ *ARGENTINA* \n"
+		  #bot_retorno+="▪️ _IP:_ *$IP* \n"
 		  bot_retorno+="*$LINE*\n"
 	      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 							--text "$(echo -e $bot_retorno)" \
